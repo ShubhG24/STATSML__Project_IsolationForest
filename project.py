@@ -46,26 +46,34 @@ def main():
     # Load and preprocess normal URLs
     normal_urls = load_dataset('normalRequestTraining.txt')
     normal_urls = preprocess_urls(normal_urls)
-    
-    X_train, X_test = train_test_split(normal_urls, test_size=0.2, random_state=42)
+
+    # To test on normalURLs testing dataset, uncomment.
+    # X_train, X_test = train_test_split(normal_urls, test_size=0.2, random_state=42)
 
     # Load and preprocess anomalous URLs
     anomalous_urls = load_dataset('anomalousRequestTest.txt')
     anomalous_urls = preprocess_urls(anomalous_urls)
+
+    # comment above commands for normalURLs testing
     
     # Create TF-IDF vectorizer
     vectorizer = TfidfVectorizer()
     
     # Combine normal and anomalous URLs for fitting the vectorizer
     all_urls = normal_urls + anomalous_urls
-    
+
+    # Uncomment to test on normalURLs and comment above cmd
+    # all_urls = normal_urls
+
     # Fit TF-IDF vectorizer on all URLs
     vectorizer.fit(all_urls)
     
     # Transform normal URLs
+    # use X_train instead of normal_urls while testing normalURLS
     X_normal = vectorizer.transform(normal_urls)
     
     # Transform anomalous URLs
+    # use X_test instead of anomalous_urls while testing normalURLS
     X_anomalous = vectorizer.transform(anomalous_urls)
     
     # Train Isolation Forest model
