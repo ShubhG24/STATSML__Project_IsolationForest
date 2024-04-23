@@ -82,6 +82,7 @@ def main():
     total_predictions = len(predictions)
     percentage_1s = (total_1s / total_predictions) * 100
     
+    # 1s represent normal and -1 represent anomalies
     print("Total occurrences of 1s:", total_1s)
     print("Total occurrences of -1s:", total_minus_1s)
     print("Percentage of 1s among all predictions:", percentage_1s)
