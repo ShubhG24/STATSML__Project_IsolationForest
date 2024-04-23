@@ -51,11 +51,10 @@ def main():
     # X_train, X_test = train_test_split(normal_urls, test_size=0.2, random_state=42)
 
     # Load and preprocess anomalous URLs
+    # Comment these for normalURLs testing
     anomalous_urls = load_dataset('anomalousRequestTest.txt')
     anomalous_urls = preprocess_urls(anomalous_urls)
 
-    # comment above commands for normalURLs testing
-    
     # Create TF-IDF vectorizer
     vectorizer = TfidfVectorizer()
     
